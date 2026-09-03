@@ -1,0 +1,569 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #222;
+}
+
+.app {
+  max-width: 1150px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
+.header p {
+  color: #666;
+  margin: 0;
+}
+
+/* ==========================================
+   SECTIONS
+   ========================================== */
+
+.products-section,
+.cart-section {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  margin-bottom: 25px;
+}
+
+.section-title h2 {
+  margin: 0 0 5px;
+}
+
+.section-title p {
+  color: #777;
+  margin: 0;
+}
+
+/* ==========================================
+   PRODUCT GRID
+   ========================================== */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  padding: 20px;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================
+   PRODUCT IMAGE
+   ========================================== */
+
+.product-image {
+  font-size: 70px;
+  margin-bottom: 10px;
+
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+/* ==========================================
+   PRODUCT TEXT
+   ========================================== */
+
+.product-card h3 {
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* ==========================================
+   HOVER DETAILS
+   ========================================== */
+
+.hover-details {
+  max-height: 0;
+  opacity: 0;
+
+  overflow: hidden;
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.product-card:hover .hover-details {
+  max-height: 120px;
+  opacity: 1;
+}
+
+.hover-details p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.hover-details span {
+  font-size: 13px;
+  color: #007bff;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+button {
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 15px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.add-button {
+  background: #007bff;
+  color: white;
+  margin-top: 10px;
+}
+
+/* ==========================================
+   PRODUCT POPUP
+   ========================================== */
+
+.popup-background {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.product-popup {
+  position: relative;
+
+  width: 90%;
+  max-width: 500px;
+
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 14px;
+
+  text-align: center;
+
+  animation: popup 0.25s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 35px;
+  height: 35px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  background: #dc3545;
+  color: white;
+}
+
+.popup-image {
+  font-size: 100px;
+  margin-bottom: 10px;
+}
+
+.popup-price {
+  font-size: 25px;
+}
+
+.product-popup > p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.details-box {
+  background: #f5f5f5;
+
+  padding: 15px;
+
+  border-radius: 8px;
+
+  margin: 20px 0;
+
+  text-align: left;
+}
+
+.details-box p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.popup-add-button {
+  background: #007bff;
+  color: white;
+
+  padding: 12px 25px;
+}
+
+/* ==========================================
+   EMPTY CART
+   ========================================== */
+
+.empty-cart {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.empty-icon {
+  font-size: 70px;
+  margin-bottom: 15px;
+}
+
+.empty-cart h3 {
+  margin-bottom: 5px;
+}
+
+.empty-cart p {
+  color: #777;
+}
+
+/* ==========================================
+   CART ITEMS
+   ========================================== */
+
+.cart-items {
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-product {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 250px;
+}
+
+.cart-image {
+  font-size: 45px;
+}
+
+.cart-product h3 {
+  margin: 0 0 5px;
+}
+
+.cart-product p {
+  margin: 0;
+  color: #666;
+}
+
+/* ==========================================
+   QUANTITY
+   ========================================== */
+
+.quantity-control {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  background: #007bff;
+  color: white;
+
+  font-size: 18px;
+}
+
+.quantity-control span {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ==========================================
+   ITEM TOTAL
+   ========================================== */
+
+.item-total {
+  font-weight: bold;
+  min-width: 110px;
+  text-align: right;
+}
+
+/* ==========================================
+   REMOVE
+   ========================================== */
+
+.remove-button {
+  background: #dc3545;
+  color: white;
+}
+
+/* ==========================================
+   COUPON
+   ========================================== */
+
+.coupon-section {
+  background: #f8f9fa;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  margin-bottom: 25px;
+}
+
+.coupon-section h3 {
+  margin-top: 0;
+}
+
+.coupon-input {
+  display: flex;
+
+  gap: 10px;
+}
+
+.coupon-input input {
+  flex: 1;
+
+  padding: 11px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+}
+
+.coupon-input button {
+  background: #28a745;
+  color: white;
+}
+
+.coupon-hint {
+  color: #777;
+  font-size: 14px;
+}
+
+.coupon-message {
+  font-weight: bold;
+}
+
+/* ==========================================
+   BILL SUMMARY
+   ========================================== */
+
+.bill-summary {
+  max-width: 450px;
+
+  margin-left: auto;
+
+  padding: 25px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+}
+
+.bill-summary h3 {
+  margin-top: 0;
+}
+
+.summary-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 15px 0;
+}
+
+.discount-row {
+  color: #28a745;
+}
+
+.bill-summary hr {
+  border: none;
+
+  border-top: 1px solid #ddd;
+
+  margin: 20px 0;
+}
+
+.grand-total {
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 21px;
+
+  font-weight: bold;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+  text-align: center;
+
+  color: #777;
+
+  padding: 20px;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 20px 10px;
+  }
+
+  .products-section,
+  .cart-section {
+    padding: 20px 15px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coupon-input {
+    flex-direction: column;
+  }
+
+  .cart-product {
+    min-width: 100%;
+  }
+
+  .item-total {
+    text-align: left;
+  }
+
+  .bill-summary {
+    max-width: 100%;
+  }
+
+}
